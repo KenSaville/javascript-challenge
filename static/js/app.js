@@ -19,12 +19,15 @@ data.forEach((tableData) => {
 
 var filterButton = d3.select(".btn-default");
 
+// Select the form
+var form = d3.select("#form");
+
 filterButton.on("click", function() {
    
   });
 
 // Create event handlers 
-button.on("click", filterTable);
+filterButton.on("click", filterTable);
 form.on("submit", filterTable);
 
 // Complete the event handler function for the form
@@ -34,12 +37,14 @@ function filterTable() {
   d3.event.preventDefault();
   
   // Select the input element and get the raw HTML node
-  var input = d3.select("#patient-form-input");
+  var input = d3.select("#datetime");
 
   // Get the value property of the input element
-  var inputValue = inputElement.property("value");
+  var inputValue = input.property("value");
 
-  console.log(inputValue);
-  console.log(people);
+  //console.log(inputValue);  to test input
 
-  var filteredData = people.filter(person => person.bloodType === inputValue);
+}
+  
+
+  //var filteredData = people.filter(person => person.bloodType === inputValue);
