@@ -33,18 +33,31 @@ form.on("submit", filterTable);
 // Complete the event handler function for the form
 function filterTable() {
 
-  // Prevent the page from refreshing
-  d3.event.preventDefault();
+    tbody.html("");
+
+    // Prevent the page from refreshing
+    d3.event.preventDefault();
   
-  // Select the input element and get the raw HTML node
-  var input = d3.select("#datetime");
+    // Select the input element and get the raw HTML node
+    var input = d3.select("#datetime");
 
-  // Get the value property of the input element
-  var inputValue = input.property("value");
+    // Get the value property of the input element
+    var inputValue = input.property("value");
 
-  //console.log(inputValue);  to test input
+    var filteredData = tableData.filter(sighting => sighting.datetime === inputValue);
+    // console.log filter values
+    console.log(filteredData);
 
-}
-  
+    filteredData.forEach(function(selections) {
 
-  //var filteredData = people.filter(person => person.bloodType === inputValue);
+        console.log(selections);
+        // Append one table row `tr` for each UFO Sighting object
+        var row = tbody.append("tr");
+        // Use `Object.entries` to console.log each UFO Sighting value
+        Object.entries(selections).forEach(function([key, value]) {
+            console.log(key, value);
+            // Append a cell to the row for each value
+            var cell = row.append("td");
+            cell.text(value);
+
+        });
